@@ -5,7 +5,12 @@ import Buttons from './Buttons';
 function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
     <ul className={s.buttonsList}>
-      <Buttons options={options} onLeaveFeedback={onLeaveFeedback}></Buttons>            
+      {options.map(option => (
+        <Buttons
+          key={option}
+          option={option}
+          onLeaveFeedback={onLeaveFeedback} />
+      ))}
     </ul>
   );
 };

@@ -1,27 +1,22 @@
 import PropTypes from 'prop-types';
 import s from './Buttons.module.css';
 
-function Buttons({ options, onLeaveFeedback }) {
+function Buttons({ option, onLeaveFeedback }) {
   return (
-    options.map(item => 
-      <li className={s.buttonsListItem} key={item}>
-        <button
-          type="button"
-          className={s.button}
-          name={item}
-          onClick={onLeaveFeedback}>
-          {item.charAt(0).toUpperCase() + item.slice(1)}
-          {/* p:first-letter{
-            text-transform:capitalize;
-            } */}
-        </button>
-      </li>
-    )
+    <li className={s.buttonsListItem}>
+      <button
+        type="button"
+        className={s.button}
+        name={option}
+        onClick={() => onLeaveFeedback(option)}>
+        {option}
+      </button>
+    </li>
   );
 };
 
 Buttons.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  option: PropTypes.string.isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 }
 
